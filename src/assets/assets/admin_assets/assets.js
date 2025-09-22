@@ -8,6 +8,7 @@ import user from './user.png'
 import cart from './cart.png'
 import menu from './menu.png'
 import dropdown from './dropdown.png'
+import model_hero from './model_hero.png'
 
 export const assets = {
     logo,
@@ -19,6 +20,7 @@ export const assets = {
     user,
     cart,
     menu,
-    dropdown
+    dropdown,
+    model_hero
 }
 
