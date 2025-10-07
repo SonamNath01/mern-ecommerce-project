@@ -12,6 +12,8 @@ import PlaceOrder from './pages/PlaceOrder'
 import Login from './pages/Login'
 import Orders from './pages/Orders'
 import Hero from './components/Hero'
+import LatestCollection from './components/LatestCollection'
+
 
 const App = () => {
   return (
@@ -29,6 +31,10 @@ const App = () => {
         <Route path='/place-order' element={<PlaceOrder />} />
         <Route path='/login' element={<Login />} />
         <Route path='/order' element={<Orders />} />
+  
+
+
+
       </Routes>
     </div>
   )

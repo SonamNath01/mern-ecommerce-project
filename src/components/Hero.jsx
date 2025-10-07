@@ -1,6 +1,8 @@
 import React from 'react'
 import {assets} from '../assets/assets/admin_assets/assets.js';
 
+
+
 const Hero = () => {
   return (
     <div className='flex flex-col sm:flex-row border border-gray-400'>
@@ -20,6 +22,8 @@ const Hero = () => {
       </div>
         {/*hero Right Side*/}
         <img className='w-full sm:w-1/2' src={assets.model_hero} alt="hero image"/>
+
+
         
     </div>
   )
