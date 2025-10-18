@@ -13,6 +13,7 @@ import Login from './pages/Login'
 import Orders from './pages/Orders'
 import Hero from './components/Hero'
 import LatestCollection from './components/LatestCollection'
+import Footer from './components/Footer'
 
 
 const App = () => {
@@ -31,11 +32,13 @@ const App = () => {
         <Route path='/place-order' element={<PlaceOrder />} />
         <Route path='/login' element={<Login />} />
         <Route path='/order' element={<Orders />} />
+        
   
 
 
 
       </Routes>
+      <Footer/>
     </div>
   )
 }
