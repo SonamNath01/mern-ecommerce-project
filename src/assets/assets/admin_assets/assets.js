@@ -9,6 +9,7 @@ import cart from './cart.png'
 import menu from './menu.png'
 import dropdown from './dropdown.png'
 import model_hero from './model_hero.png'
+import cross from './cross.png'
 
 export const assets = {
     logo,
@@ -21,6 +22,7 @@ export const assets = {
     cart,
     menu,
     dropdown,
-    model_hero
+    model_hero,
+    cross
 }
 

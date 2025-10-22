@@ -14,12 +14,14 @@ import Orders from './pages/Orders'
 import Hero from './components/Hero'
 import LatestCollection from './components/LatestCollection'
 import Footer from './components/Footer'
+import SeachBar from './components/SeachBar'
 
 
 const App = () => {
   return (
     <div className='px-4 sm:px-[5vw] lg:px-[9vw]'>
       <Navbar />
+      <SeachBar/>
       
       <Routes>
         <Route path='/' element={<Home />} />
