@@ -17,9 +17,16 @@ import Footer from './components/Footer'
 import SeachBar from './components/SeachBar'
 
 
+import { ToastContainer, toast } from 'react-toastify';
+
+
 const App = () => {
   return (
     <div className='px-4 sm:px-[5vw] lg:px-[9vw]'>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+      />
       <Navbar />
       <SeachBar/>
       
