@@ -3,7 +3,7 @@ import { ShopContext } from '../context/ShopContext.jsx';
 import { useContext } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import Tiltle from './Title.jsx';
+import Title from './Title.jsx';
 import Productitems from './Productitems.jsx';
 
 const RealatedProduct = ({category,subCategory}) => {
