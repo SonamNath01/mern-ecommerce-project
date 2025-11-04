@@ -1,5 +1,5 @@
 import React from 'react'
-import {assets} from '../assets/assets/admin_assets/assets.js';
+import {assets} from '../../../admin/src/assets/admin_assets/assets.js';
 
 
 

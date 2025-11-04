@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Martel+Sans:wght@300;600&family=Outfit:wght@100..900&family=Prata&display=swap');
+@import "tailwindcss";
+*{
+    font-family: Outfit;
+}
+a.active {
+  background-color: #ffebf5; 
+  border-color: #c586a5;     
+}
