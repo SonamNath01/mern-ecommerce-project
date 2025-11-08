@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { assets } from "../../../admin/src/assets/admin_assets/assets.js";
 import axios from "axios";
 import { backendURL } from '../App.jsx';
+import { toast } from "react-toastify";
 const Add = ({token}) => {
   const [image1, setImage1] = useState(false);
   const [image2, setImage2] = useState(false)
@@ -32,9 +33,27 @@ const Add = ({token}) => {
       image3 && formData.append("image3", image3);
       image4 && formData.append("image4", image4);
       const response = await axios.post(backendURL + '/api/product/add', formData, {headers: {token}});
-      console.log(response.data);
+
+      if (response && response.data && response.data.success) {
+        toast.success('Product added successfully');
+        
+        setName("");
+        setDescription("");
+        setImage1(false);
+        setImage2(false);
+        setImage3(false);
+        setImage4(false);
+        setPrice("");
+        setCategory("Men");
+        setSubCategory("TopWear");
+        setBestseller(false);
+        setSizes([]);
+      } else {
+        toast.error(response && response.data && response.data.message ? response.data.message : 'Failed to add product');
+      }
     }catch(err){
       console.log("Error in submitting the form:", err);
+      toast.error('Something went wrong. Please try again later.');
     }
    };
 
