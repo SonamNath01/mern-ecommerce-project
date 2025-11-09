@@ -1,15 +1,19 @@
+
 import React, { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/ShopContext.jsx";
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from "react-router-dom";
 import Title from "../components/Title.jsx";
 import { assets } from "../assets/assets/frontend_assets/assets.js";
-import CartTotal from "../components/CartTotal.jsx"; 
+import CartTotal from "../components/CartTotal.jsx";
 
 const Card = () => {
-  const { products, currency, cartItems, updateQuantity ,navigate} = useContext(ShopContext);
+  const { products, currency, cartItems, updateQuantity } = useContext(ShopContext);
   const [cartData, setCartData] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
+     
+    if(products.length > 0) {
     const tempData = [];
     for (const item in cartItems) {
       for (const size in cartItems[item]) {
@@ -23,6 +27,9 @@ const Card = () => {
         }
       }
     }
+
+    }
+    
     setCartData(tempData);
   }, [cartItems, products]);
 
@@ -47,17 +54,17 @@ const Card = () => {
               <div className="flex items-start gap-4 sm:gap-6">
                 <img
                   className="w-16 sm:w-20 rounded-md object-cover"
-                  src={productData.image[0]}
-                  alt={productData.name}
+                  src={productData?.images?.[0]}
+                  alt={productData?.name}
                 />
                 <div>
                   <p className="text-sm sm:text-lg font-medium text-gray-900">
-                    {productData.name}
+                    {productData?.name}
                   </p>
                   <div className="flex items-center gap-4 mt-2">
                     <p className="text-gray-700 font-semibold">
                       {currency}
-                      {productData.price}
+                      {productData?.price}
                     </p>
                     <p className="px-2 sm:px-3 sm:py-1 border border-gray-300 rounded bg-gray-100 text-sm font-medium">
                       {item.size}
@@ -95,8 +102,12 @@ const Card = () => {
         <div className="w-full sm:w-[450px] bg-white/70 backdrop-blur-md shadow-[0_4px_25px_rgba(0,0,0,0.1)] rounded-lg p-6">
           <CartTotal />
           <div className="w-full text-end">
-            <button  onClick={()=>navigate('/place-order')}className="bg-black text-white text-sm my-8 px-8 py-3">PROCEED TO CHECKOUT</button>
-
+            <button
+              onClick={() => navigate("/place-order")}
+              className="bg-black text-white text-sm my-8 px-8 py-3"
+            >
+              PROCEED TO CHECKOUT
+            </button>
           </div>
         </div>
       </div>

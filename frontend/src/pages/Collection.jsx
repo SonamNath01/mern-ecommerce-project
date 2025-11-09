@@ -73,7 +73,7 @@ const Collection = () => {
 
   useEffect(() => {
     applyFilter();
-  }, [category, subCategory,search,showSearch]);
+  }, [category, subCategory,search,showSearch,products]);
 
   useEffect(() => {
     sortProducts();
@@ -196,7 +196,7 @@ const Collection = () => {
             <Productitems
               key={index}
               id={item._id}
-              image={item.image}
+              images={item.images}
               name={item.name}
               price={item.price}
             />

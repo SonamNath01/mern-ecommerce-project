@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { ShopContext } from '../context/ShopContext.jsx';
 import { Link } from 'react-router-dom';
 
-const Productitems = ({ id, image, name, price }) => {
+const Productitems = ({ id, images, name, price }) => {
   const { currency } = useContext(ShopContext);
 
   return (
@@ -10,7 +10,7 @@ const Productitems = ({ id, image, name, price }) => {
       <div className='overflow-hidden'>
         <img
           className='hover:scale-110 transition ease-in-out duration-300'
-          src={image && image[0] ? image[0] : ''}
+          src={images && images[0] ? images[0] : ''}
           alt={name}
         />
       </div>
