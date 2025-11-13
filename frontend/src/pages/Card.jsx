@@ -1,4 +1,3 @@
-
 import React, { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/ShopContext.jsx";
 import { useNavigate } from "react-router-dom";
@@ -12,39 +11,36 @@ const Card = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-     
-    if(products.length > 0) {
     const tempData = [];
-    for (const item in cartItems) {
-      for (const size in cartItems[item]) {
-        if (cartItems[item][size] > 0) {
-          tempData.push({
-            _id: item,
-            size: size,
-            quantity: cartItems[item][size],
-            data: products.find((product) => product._id === item),
-          });
+
+    if (products.length > 0) {
+      for (const item in cartItems) {
+        for (const size in cartItems[item]) {
+          if (cartItems[item][size] > 0) {
+            tempData.push({
+              _id: item,
+              size: size,
+              quantity: cartItems[item][size],
+              data: products.find((product) => product._id === item),
+            });
+          }
         }
       }
     }
 
-    }
-    
     setCartData(tempData);
   }, [cartItems, products]);
 
   return (
     <>
-      {/* 🛒 Cart Items Section */}
+      {/* Cart Items Section */}
       <div className="border-t pt-14 px-4 sm:px-8">
         <div className="text-2xl mb-6 font-semibold text-gray-800">
           <Title text1={"YOUR"} text2={"CART"} />
         </div>
 
         {cartData.map((item, index) => {
-          const productData = products.find(
-            (product) => product._id === item._id
-          );
+          const productData = item.data; // Already stored in tempData
           return (
             <div
               key={index}
@@ -97,7 +93,7 @@ const Card = () => {
         })}
       </div>
 
-      {/* 💰 Cart Total Section */}
+      {/*  Cart Total Section */}
       <div className="flex justify-end my-20 px-4 sm:px-8">
         <div className="w-full sm:w-[450px] bg-white/70 backdrop-blur-md shadow-[0_4px_25px_rgba(0,0,0,0.1)] rounded-lg p-6">
           <CartTotal />
