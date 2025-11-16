@@ -133,7 +133,7 @@ const Add = ({token}) => {
       <div className="flex flex-col gap-3 w-full">
         <div className="w-full">
           <p className="mb-2">Product name</p>
-          <input
+          <textarea
             onChange={(e) => setName(e.target.value)}
             value={name}
             className="w-full max-w-[500px] px-3 py-2 border rounded"
