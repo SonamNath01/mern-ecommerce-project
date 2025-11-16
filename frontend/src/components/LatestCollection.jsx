@@ -14,12 +14,12 @@ const LatestCollection = () => {
   return (
     <div className="my-10">
       <div className="text-center py-8 text-2xl">
-       <Title text1={"LATEST"} text2={"COLLECTION"} />
-        <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia amet
-          rerum possimus corrupti iure quis. Atque unde dolores tempora cum
-          error consectetur dicta voluptates deleniti dolore, iste ipsa
-          aspernatur excepturi.
+        <Title text1={"LATEST"} text2={"COLLECTION"} />
+        <p className="w-3/4 m-auto text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed">
+          Discover our newest arrivals, carefully curated to bring you the
+          freshest styles of the season. Explore trending designs,
+          premium-quality picks, and the latest must-have pieces — all in one
+          place.
         </p>
       </div>
 

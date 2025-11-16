@@ -120,7 +120,7 @@ const Products = () => {
             <p>Easy return and exchange policy within 7 days.</p>
           </div>
         </div>
-      </div>
+      </div>a
 
       {/* ---------- Description & Review Tabs ---------- */}
       <div className="mt-20 max-w-6xl mx-auto bg-white rounded-xl shadow-sm border border-gray-200">

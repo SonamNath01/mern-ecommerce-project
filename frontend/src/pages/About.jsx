@@ -6,72 +6,77 @@ import NewsletterBox from '../components/NewsletterBox';
 const About = () => {
   return (
     <div className="bg-gray-50">
+
       {/* ---------- About Section ---------- */}
-      <div className="text-2xl text-center pt-8 border-t">
+      <div className="text-3xl sm:text-4xl text-center pt-10 pb-4 border-t font-semibold tracking-wide text-gray-900">
         <Title text1={'About'} text2={'US'} />
       </div>
 
-      <div className="my-10 flex flex-col md:flex-row gap-12 md:gap-20 px-6 md:px-16">
+      <div className="my-14 flex flex-col md:flex-row gap-14 md:gap-20 px-6 md:px-20 max-w-6xl mx-auto">
         <img
-          className="w-full md:max-w-[450px] rounded-2xl shadow-lg shadow-gray-300"
+          className="w-full md:max-w-[480px] rounded-3xl shadow-xl shadow-gray-300"
           src={assets.about_img}
           alt="About Us"
         />
-        <div className="flex flex-col justify-center gap-6 md:w-2/4 text-gray-700 leading-relaxed">
+
+        <div className="flex flex-col justify-center gap-6 md:w-3/5 text-gray-700 leading-relaxed text-base sm:text-lg">
           <p>
-            Welcome to <span className="font-semibold text-gray-900">ShopEase</span> — your one-stop destination for trendy fashion,
-            lifestyle essentials, and everyday comfort.
+            Welcome to <span className="font-semibold text-gray-900 text-lg">ShopEase</span> — your go-to destination for effortless
+            fashion, modern lifestyle essentials, and products that make
+            everyday life better.
           </p>
+
           <p>
-            Founded in 2023, ShopEase was created with a simple idea: to make
-            online shopping easier, faster, and more enjoyable. From stylish
-            clothing and accessories to tech gadgets and home decor, we bring
-            you handpicked products that combine quality, affordability, and
-            style.
+            Founded in 2023, ShopEase was built with a vision to make online
+            shopping smoother, faster, and more enjoyable. From stylish outfits
+            and accessories to useful gadgets and home essentials — everything
+            we offer is curated with quality, comfort, and affordability in mind.
           </p>
-          <b className="text-gray-900 text-lg">Our Mission</b>
+
+          <p className="font-bold text-xl text-gray-900">Our Mission</p>
+
           <p>
-            We believe shopping isn’t just about buying products — it’s about
-            finding something that fits your style, your vibe, and your
-            lifestyle.
+            We believe shopping isn’t just buying things — it’s expressing your
+            vibe, your style, and your personality. Our aim is to bring products
+            that inspire confidence and make your everyday moments better.
           </p>
         </div>
       </div>
 
       {/* ---------- Why Choose Us Section ---------- */}
-      <div className="text-xl py-6 text-center">
+      <div className="text-3xl sm:text-4xl py-8 text-center font-semibold tracking-wide text-gray-900">
         <Title text1={'WHY'} text2={'CHOOSE US'} />
       </div>
 
-      <div className="grid md:grid-cols-3 gap-8 px-6 md:px-16 pb-20">
+      <div className="grid md:grid-cols-3 gap-10 px-6 md:px-20 pb-24 max-w-6xl mx-auto">
+        
         {/* ---------- Quality Assurance ---------- */}
-        <div className="bg-white border border-gray-200 p-8 rounded-2xl shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-300 backdrop-blur-lg">
-          <b className="text-gray-900 text-lg">Quality Assurance</b>
-          <p className="text-gray-600 mt-3">
-            Every product that reaches you goes through a strict quality control
-            process to ensure you receive only the best — because you deserve
-            excellence.
+        <div className="bg-white border border-gray-200 p-8 rounded-2xl shadow-md hover:shadow-xl hover:scale-[1.03] transition-all duration-300 backdrop-blur-lg">
+          <p className="text-xl font-semibold text-gray-900">Quality Assurance</p>
+          <p className="text-gray-600 mt-3 text-base leading-relaxed">
+            Every product undergoes strict quality checks to ensure you receive
+            premium, durable, and trustworthy items — always.
           </p>
         </div>
 
         {/* ---------- Convenience ---------- */}
-        <div className="bg-white border border-gray-200 p-8 rounded-2xl shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-300 backdrop-blur-lg">
-          <b className="text-gray-900 text-lg">Convenience</b>
-          <p className="text-gray-600 mt-3">
-            We’ve designed every step of your experience with simplicity and
-            speed in mind — so you can shop stress-free, anytime, anywhere.
+        <div className="bg-white border border-gray-200 p-8 rounded-2xl shadow-md hover:shadow-xl hover:scale-[1.03] transition-all duration-300 backdrop-blur-lg">
+          <p className="text-xl font-semibold text-gray-900">Convenience</p>
+          <p className="text-gray-600 mt-3 text-base leading-relaxed">
+            A seamless shopping experience designed around you — fast browsing,
+            smooth checkout, and quick doorstep delivery.
           </p>
         </div>
 
         {/* ---------- Exceptional Customer Service ---------- */}
-        <div className="bg-white border border-gray-200 p-8 rounded-2xl shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-300 backdrop-blur-lg">
-          <b className="text-gray-900 text-lg">Exceptional Customer Service</b>
-          <p className="text-gray-600 mt-3">
-            We don’t just sell products — we build relationships. Our support
-            team ensures that you feel valued, heard, and supported at every
-            step.
+        <div className="bg-white border border-gray-200 p-8 rounded-2xl shadow-md hover:shadow-xl hover:scale-[1.03] transition-all duration-300 backdrop-blur-lg">
+          <p className="text-xl font-semibold text-gray-900">Exceptional Support</p>
+          <p className="text-gray-600 mt-3 text-base leading-relaxed">
+            Our customer support team is always ready to help — ensuring a
+            friendly, fast, and reliable experience every time you shop.
           </p>
         </div>
+
       </div>
 
       <NewsletterBox />
