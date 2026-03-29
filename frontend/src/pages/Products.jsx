@@ -52,7 +52,7 @@ const Products = () => {
             ))}
           </div>
 
-          {/* Main large image */}
+          {/* M         ain large image */}
           <div className="w-full sm:w-[80%]">
             <img className="w-full h-auto" src={image} alt="" />
           </div>
@@ -77,7 +77,7 @@ const Products = () => {
             {currency}
             {productData.price}
           </p>
-
+3333333333
           {/* Description */}
           <p className="mt-5 text-gray-500 md:w-4/5">
             {productData.description}

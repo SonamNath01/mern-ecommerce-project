@@ -10,15 +10,23 @@ import orderRouter from './routes/orderRoutes.js';
 
 // App config
 const app = express()
-const port = process.env.PORT || 4000
-
+const PORT = process.env.PORT || 4000
+const allowedOrigins = [
+  'https://mern-ecommerce-project-sigma.vercel.app',  
+  'https://mern-ecommerce-project-crpi.vercel.app',  
+  'http://localhost:5173',
+  'http://localhost:5174'  
+]
 // Connect to DB & Cloudinary
 connectDB()
 connectCloudinary()
 
 // Middleware
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}))
 
 // API endpoints
 app.use('/api/user', userRouter)
@@ -31,4 +39,4 @@ app.get('/', (req, res) => {
 })
 
 // Start server
-app.listen(port, () => console.log('Server started on port: ' + port))
+app.listen(PORT, () => console.log(`Server started on port: ${PORT}`))
