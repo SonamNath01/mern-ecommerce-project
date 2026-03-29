@@ -2,7 +2,7 @@
 import React from 'react'
 import { useState } from 'react';
 import axios from 'axios';
-import { backendURL } from '../App.jsx';
+import { backendURL } from '../config.js';
 import { toast } from 'react-toastify';
 
 

@@ -10,11 +10,11 @@ import List from "./pages/List";
 import Orders from "./pages/Order";
 import Login from "./components/Login";
 import React from 'react';
+import { currency } from './config.js';
 
 import { ToastContainer } from 'react-toastify';
 
-export const backendURL = import.meta.env.VITE_BACKEND_URL;
-export const currency = '$';
+export { currency };
 
 
 function App() {

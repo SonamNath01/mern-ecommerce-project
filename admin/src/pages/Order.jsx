@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { backendURL } from "../App";
+import { backendURL } from "../config.js";
 import { toast } from "react-toastify";
 import { assets } from "../assets/admin_assets/assets";
 

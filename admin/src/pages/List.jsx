@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { backendURL, currency } from "../App.jsx";
+import { backendURL, currency } from "../config.js";
 import { toast } from "react-toastify";
 
 const List = ({ token }) => {
