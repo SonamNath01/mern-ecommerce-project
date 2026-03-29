@@ -11,12 +11,14 @@ import orderRouter from './routes/orderRoutes.js';
 // App config
 const app = express()
 const PORT = process.env.PORT || 4000
+
 const allowedOrigins = [
-  'https://mern-ecommerce-project-sigma.vercel.app',  
-  'https://mern-ecommerce-project-crpi.vercel.app',  
+  'https://mern-ecommerce-project-sigma.vercel.app',
+  'https://mern-ecommerce-project-crpi.vercel.app',
   'http://localhost:5173',
-  'http://localhost:5174'  
+  'http://localhost:5174'
 ]
+
 // Connect to DB & Cloudinary
 connectDB()
 connectCloudinary()
@@ -24,13 +26,21 @@ connectCloudinary()
 // Middleware
 app.use(express.json())
 app.use(cors({
-  origin: allowedOrigins,
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.some(o => 
+      typeof o === 'string' ? o === origin : o.test(origin)
+    ) || (origin && origin.includes('vercel.app'))) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
   credentials: true
 }))
 
 // API endpoints
 app.use('/api/user', userRouter)
-app.use('/api/product',productRouter)
+app.use('/api/product', productRouter)
 app.use('/api/cart', cartRouter)
 app.use('/api/order', orderRouter) 
 
