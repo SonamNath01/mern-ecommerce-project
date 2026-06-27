@@ -52,7 +52,7 @@ const List = ({ token }) => {
         </div>
         {/*---------------Product List-----------------*/}
         {list.map((item, index) => (
-            <div key={index} className="hidden md:grid grid-cols-[1fr_3fr_1fr_1fr_1fr] items-center gap-1 px-2 border text-sm">
+            <div key={item._id} className="hidden md:grid grid-cols-[1fr_3fr_1fr_1fr_1fr] items-center gap-1 px-2 border text-sm">
               <img className="w-12" src={item.images[0]} alt={item.name} />
               <p>{item.name}</p>
               <p>{item.category}</p>

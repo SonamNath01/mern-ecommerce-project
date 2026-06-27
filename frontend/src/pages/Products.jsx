@@ -16,21 +16,13 @@ const Products = () => {
   const [image, setImage] = useState("");
   const [size, setSize] = useState("");
 
-  // Fetch the product details from context products array
-  const fetchProductData = async () => {
-    products.map((item) => {
-      if (item._id === productId) {
-        setProductData(item);
-        setImage(item.images && item.images[0]);
-        return null;
-      }
-      return null;
-    });
-  };
-
-  // Refetch product when productId or product list changes
   useEffect(() => {
-    fetchProductData();
+    const found = products.find((item) => item._id === productId);
+    if (found) {
+      setProductData(found);
+      setImage(found.images?.[0] ?? "");
+      setSize("");
+    }
   }, [productId, products]);
 
   return productData ? (
@@ -77,7 +69,6 @@ const Products = () => {
             {currency}
             {productData.price}
           </p>
-3333333333
           {/* Description */}
           <p className="mt-5 text-gray-500 md:w-4/5">
             {productData.description}
@@ -120,7 +111,7 @@ const Products = () => {
             <p>Easy return and exchange policy within 7 days.</p>
           </div>
         </div>
-      </div>a
+      </div>
 
       {/* ---------- Description & Review Tabs ---------- */}
       <div className="mt-20 max-w-6xl mx-auto bg-white rounded-xl shadow-sm border border-gray-200">

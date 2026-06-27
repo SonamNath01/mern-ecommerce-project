@@ -5,7 +5,7 @@ import Title from "../components/Title.jsx";
 import Productitems from "../components/Productitems.jsx";
 
 const Collection = () => {
-  const { products,search,showSearch } = useContext(ShopContext);
+  const { products, search, showSearch } = useContext(ShopContext);
 
   const [showFilter, setShowFilter] = useState(false);
   const [filterProducts, setFilterProducts] = useState([]);
@@ -31,12 +31,12 @@ const Collection = () => {
 
   const applyFilter = () => {
     let productsCopy = products.slice();
-    if(showSearch&&search){
+
+    if (showSearch && search) {
       productsCopy = productsCopy.filter((item) =>
         item.name.toLowerCase().includes(search.toLowerCase())
       );
     }
-
 
     if (category.length > 0) {
       productsCopy = productsCopy.filter((item) =>
@@ -54,17 +54,15 @@ const Collection = () => {
   };
 
   const sortProducts = () => {
-    let fpCopy = [...filterProducts];
+    const fpCopy = [...filterProducts];
 
     switch (sortType) {
       case "low-to-high":
         setFilterProducts(fpCopy.sort((a, b) => a.price - b.price));
         break;
-
       case "high-to-low":
         setFilterProducts(fpCopy.sort((a, b) => b.price - a.price));
         break;
-
       default:
         applyFilter();
         break;
@@ -73,7 +71,7 @@ const Collection = () => {
 
   useEffect(() => {
     applyFilter();
-  }, [category, subCategory,search,showSearch,products]);
+  }, [category, subCategory, search, showSearch, products]);
 
   useEffect(() => {
     sortProducts();
@@ -89,9 +87,7 @@ const Collection = () => {
         >
           FILTERS
           <img
-            className={`h-3 sm:hidden transition-transform duration-300 ${
-              showFilter ? "rotate-90" : ""
-            }`}
+            className={`h-3 sm:hidden transition-transform duration-300 ${showFilter ? "rotate-90" : ""}`}
             src={assets.dropdown}
             alt="dropdown"
           />
@@ -105,33 +101,17 @@ const Collection = () => {
         >
           <p className="mb-3 text-sm font-medium">CATEGORIES</p>
           <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
-            <p className="flex gap-2">
-              <input
-                className="w-3"
-                type="checkbox"
-                value="Men"
-                onChange={toggleCategory}
-              />{" "}
-              <span>Men</span>
-            </p>
-            <p className="flex gap-2">
-              <input
-                className="w-3"
-                type="checkbox"
-                value="Women"
-                onChange={toggleCategory}
-              />{" "}
-              <span>Women</span>
-            </p>
-            <p className="flex gap-2">
-              <input
-                className="w-3"
-                type="checkbox"
-                value="Children"
-                onChange={toggleCategory}
-              />{" "}
-              <span>Children</span>
-            </p>
+            {["Men", "Women", "Children"].map((cat) => (
+              <p key={cat} className="flex gap-2">
+                <input
+                  className="w-3"
+                  type="checkbox"
+                  value={cat}
+                  onChange={toggleCategory}
+                />
+                <span>{cat}</span>
+              </p>
+            ))}
           </div>
         </div>
 
@@ -143,43 +123,25 @@ const Collection = () => {
         >
           <p className="mb-3 text-sm font-medium">SUBCATEGORIES</p>
           <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
-            <p className="flex gap-2">
-              <input
-                className="w-3"
-                type="checkbox"
-                value="Topwear"
-                onChange={toggleSubcategory}
-              />{" "}
-              <span>Topwear</span>
-            </p>
-            <p className="flex gap-2">
-              <input
-                className="w-3"
-                type="checkbox"
-                value="Bottomwear"
-                onChange={toggleSubcategory}
-              />{" "}
-              <span>Bottomwear</span>
-            </p>
-            <p className="flex gap-2">
-              <input
-                className="w-3"
-                type="checkbox"
-                value="Winterwear"
-                onChange={toggleSubcategory}
-              />{" "}
-              <span>Winterwear</span>
-            </p>
+            {["Topwear", "Bottomwear", "Winterwear"].map((sub) => (
+              <p key={sub} className="flex gap-2">
+                <input
+                  className="w-3"
+                  type="checkbox"
+                  value={sub}
+                  onChange={toggleSubcategory}
+                />
+                <span>{sub}</span>
+              </p>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Right Side - Products */}
       <div className="flex-1">
-        {/* Sort and Title Section */}
         <div className="flex justify-between items-center text-base sm:text-2xl mb-4">
           <Title text1={"ALL"} text2={"COLLECTION"} />
-
           <select
             className="border-2 border-gray-300 text-sm px-3 py-1 rounded-md hover:border-gray-400 transition-all duration-200 cursor-pointer"
             onChange={(e) => setSortType(e.target.value)}
@@ -190,11 +152,10 @@ const Collection = () => {
           </select>
         </div>
 
-        {/* Products Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6">
-          {filterProducts.map((item, index) => (
+          {filterProducts.map((item) => (
             <Productitems
-              key={index}
+              key={item._id}
               id={item._id}
               images={item.images}
               name={item.name}

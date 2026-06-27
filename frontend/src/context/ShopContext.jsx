@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import axios from 'axios'; 
+import axios from 'axios';
 
 export const ShopContext = createContext();
 
@@ -24,16 +24,11 @@ const ShopContextProvider = ({ children }) => {
       return;
     }
 
-    let cartData = structuredClone(cartItems);
+    const cartData = structuredClone(cartItems);
     if (cartData[itemId]) {
-      if (cartData[itemId][size]) {
-        cartData[itemId][size] += 1;
-      } else {
-        cartData[itemId][size] = 1;
-      }
+      cartData[itemId][size] = (cartData[itemId][size] || 0) + 1;
     } else {
-      cartData[itemId] = {};
-      cartData[itemId][size] = 1;
+      cartData[itemId] = { [size]: 1 };
     }
 
     setCartItems(cartData);
@@ -56,22 +51,18 @@ const ShopContextProvider = ({ children }) => {
 
   const getCartCount = () => {
     let totalCount = 0;
-    try {
-      for (const item in cartItems) {
-        for (const size in cartItems[item]) {
-          if (cartItems[item][size] > 0) {
-            totalCount += cartItems[item][size];
-          }
+    for (const item in cartItems) {
+      for (const size in cartItems[item]) {
+        if (cartItems[item][size] > 0) {
+          totalCount += cartItems[item][size];
         }
       }
-    } catch (err) {
-      console.error("Error calculating cart count:", err);
     }
     return totalCount;
   };
 
   const updateQuantity = async (itemId, size, quantity) => {
-    let cartData = structuredClone(cartItems);
+    const cartData = structuredClone(cartItems);
 
     if (quantity <= 0) {
       if (cartData[itemId]) {
@@ -102,28 +93,25 @@ const ShopContextProvider = ({ children }) => {
   };
 
   const getCartAmount = () => {
-  let totalAmount = 0;
+    let totalAmount = 0;
 
-  if (!products || products.length === 0) return 0;
+    if (!products || products.length === 0) return 0;
 
-  for (const itemId in cartItems) {
+    for (const itemId in cartItems) {
+      const itemInfo = products.find(
+        (product) => String(product._id) === String(itemId)
+      );
 
-    const itemInfo = products.find(
-      (product) => String(product._id) === String(itemId)
-    );
+      if (!itemInfo) continue;
 
-    if (!itemInfo) continue;
-
-    for (const size in cartItems[itemId]) {
-      const quantity = cartItems[itemId][size] || 0;
-      const price = itemInfo.price || 0;
-      totalAmount += price * quantity;
+      for (const size in cartItems[itemId]) {
+        const quantity = cartItems[itemId][size] || 0;
+        totalAmount += (itemInfo.price || 0) * quantity;
+      }
     }
-  }
 
-  return totalAmount;
-};
-
+    return totalAmount;
+  };
 
   const getProducts = async () => {
     try {
@@ -139,9 +127,13 @@ const ShopContextProvider = ({ children }) => {
     }
   };
 
-  const getUserCart = async (token) => {
+  const getUserCart = async (userToken) => {
     try {
-      const response = await axios.post(backendURL + '/api/cart/get', {}, { headers: { token } });
+      const response = await axios.post(
+        backendURL + '/api/cart/get',
+        {},
+        { headers: { token: userToken } }
+      );
       if (response.data.success) {
         setCartItems(response.data.cartData);
       }
@@ -156,11 +148,12 @@ const ShopContextProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    if (!token && localStorage.getItem('token')) {
-      setToken(localStorage.getItem('token'));
-      getUserCart(localStorage.getItem('token'));
+    const savedToken = localStorage.getItem('token');
+    if (!token && savedToken) {
+      setToken(savedToken);
+      getUserCart(savedToken);
     }
-  }, [token]);
+  }, []);
 
   const value = {
     products,
@@ -179,7 +172,7 @@ const ShopContextProvider = ({ children }) => {
     backendURL,
     setToken,
     token,
-    setCartItems
+    setCartItems,
   };
 
   return (
